@@ -79,8 +79,10 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"taskID"];
     cell.textLabel.text = [self.tasks objectAtIndex:indexPath.row];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
 
     return cell;
     
