@@ -27,11 +27,27 @@
     @"Place a stop on mail",
     nil];
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
 
+
+- (IBAction)swipedRight:(UISwipeGestureRecognizer *)sender {
+    if (sender.state == UIGestureRecognizerStateEnded) {
+        CGPoint point = [sender locationInView:self.tasksTableView];
+        NSIndexPath *indexPath = [self.tasksTableView indexPathForRowAtPoint:point];
+        UITableViewCell *swipeRigntCell = [self.tasksTableView cellForRowAtIndexPath:indexPath];
+            if (swipeRigntCell.textLabel.textColor == [UIColor blackColor]) {
+                swipeRigntCell.textLabel.textColor = [UIColor greenColor];
+            }else if(swipeRigntCell.textLabel.textColor == [UIColor greenColor]){
+                swipeRigntCell.textLabel.textColor = [UIColor yellowColor];
+            }else if(swipeRigntCell.textLabel.textColor == [UIColor yellowColor]){
+                swipeRigntCell.textLabel.textColor = [UIColor redColor];
+            }else if (swipeRigntCell.textLabel.textColor == [UIColor redColor]){
+                swipeRigntCell.textLabel.textColor = [UIColor blackColor];
+            }
+        }
 }
 
 #pragma mark - TableView Editing
-
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     [super setEditing:editing animated:animated];
     [self.tasksTableView setEditing:editing animated:YES];
@@ -83,7 +99,6 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"taskID"];
     cell.textLabel.text = [self.tasks objectAtIndex:indexPath.row];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-
     return cell;
     
 }
@@ -94,6 +109,5 @@
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
 
 @end

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -25,8 +26,13 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="taskID" id="aN1-bW-k5B">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aN1-bW-k5B" id="zeP-Lo-fVB">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="DyL-aN-OM3" appends="YES" id="Ge0-cS-Yce"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -68,10 +74,10 @@
                                 <exclude reference="LgO-if-BdP"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="cv0-15-7q6"/>
                                 <exclude reference="TSp-Y0-hR0"/>
                                 <exclude reference="b89-xY-5pY"/>
                                 <exclude reference="sOR-1u-8Ar"/>
-                                <exclude reference="cv0-15-7q6"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -81,10 +87,10 @@
                                 <include reference="LgO-if-BdP"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="cv0-15-7q6"/>
                                 <include reference="TSp-Y0-hR0"/>
                                 <include reference="b89-xY-5pY"/>
                                 <include reference="sOR-1u-8Ar"/>
-                                <include reference="cv0-15-7q6"/>
                             </mask>
                         </variation>
                     </view>
@@ -95,6 +101,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="DyL-aN-OM3">
+                    <connections>
+                        <action selector="swipedRight:" destination="BYZ-38-t0r" id="3KD-Xo-OGG"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1116" y="369"/>
         </scene>
